@@ -20,20 +20,22 @@ def main():
 
     tmr = 0
     while True:
+        x = 0
+        y = 0
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
 
         if key_lst[pg.K_UP]: #上に移動 練習8-4
-            kk_rct.move_ip(0, -1)
+            y = -1
         if key_lst[pg.K_DOWN]: #下に移動
-            kk_rct.move_ip(0, +1)
+            y = 1
         if key_lst[pg.K_LEFT]: #左に移動
-            kk_rct.move_ip(-1, 0)
+            x = -1
         if key_lst[pg.K_RIGHT]: #右に移動
-            kk_rct.move_ip(2, 0)
-        
-        kk_rct.move_ip(-1, 0)
+            x = +2
+        kk_rct.move_ip(x-1, y)
+
         x = tmr%3200 #練習6
         screen.blit(bg_img, [-x, 0]) #練習6
         screen.blit(bg_img2, [-x+1600, 0]) #練習7-1
